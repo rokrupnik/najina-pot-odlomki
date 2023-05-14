@@ -1,7 +1,7 @@
 const fetch = require('node-fetch')
 
 exports.handler = async event => {
-    const passage = event.queryStringParameters.passage || ''
+    let passage = event.queryStringParameters.passage || ''
     passage = encodeURI(passage)
 
     let statusCode, html;
