@@ -50,6 +50,6 @@ button:first-child {
   display: none;
 }
 
-table div {
+.passage table div {
   display: block;
 }
