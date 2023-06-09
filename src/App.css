@@ -44,3 +44,12 @@ button:first-child {
 .read-the-docs {
   color: #888;
 }
+
+.passage div,
+.passage form {
+  display: none;
+}
+
+table div {
+  display: block;
+}
