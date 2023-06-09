@@ -8,10 +8,7 @@ exports.handler = async event => {
 
     try {
 
-        var myHeaders = new Headers();
-        myHeaders.append('Content-Type','text/html; charset=windows-1250');
-
-        const response = await fetch(`https://www.biblija.net/biblija.cgi?m=${passage}&q=&idq=60&id59=1&pos=0&set=26&l=sl3`, myHeaders);
+        const response = await fetch(`https://www.biblija.net/biblija.cgi?m=${passage}&q=&idq=60&id59=1&pos=0&set=26&l=sl3`);
         html = await response.text();
         statusCode = 200;
     } catch (err) {
