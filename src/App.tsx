@@ -18,9 +18,6 @@ if (initialPassage) {
   initialPassage = passages[initialPassageIndex]
 }
 
-
-
-
 function App() {
   const [index, setIndex] = useState(initialPassageIndex)
   // const [filter, setFilter] = useState('')
