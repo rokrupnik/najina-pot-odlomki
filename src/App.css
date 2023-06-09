@@ -46,7 +46,8 @@ button:first-child {
 }
 
 .passage div,
-.passage form {
+.passage form,
+.passage hr {
   display: none;
 }
 
