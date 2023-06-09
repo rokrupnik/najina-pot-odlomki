@@ -65,7 +65,7 @@ function App() {
     <>
       {/* If no passage is selected, filter down by book and chapters (useState?) */}
       <h1>Odlomki najina pot</h1>
-      <h3>{ passage }</h3>
+      {/* <h3>{ passage }</h3> */}
       <div className="card">
         <button onClick={() => handleClick(-1)} disabled={index === 0}>
           Nazaj
