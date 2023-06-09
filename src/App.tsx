@@ -31,7 +31,12 @@ function App() {
   
 
   useEffect(() => {
-    fetch('/.netlify/functions/biblija-net-proxy?passage=' + encodeURIComponent(passage) )
+    
+
+    var myHeaders = new Headers();
+    myHeaders.append('Content-Type','text/html; charset=windows-1250');
+
+    fetch('/.netlify/functions/biblija-net-proxy?passage=' + encodeURIComponent(passage), myHeaders )
       .then(res => res.text())
       .then(html => {
         // console.log(html)
