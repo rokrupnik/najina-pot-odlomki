@@ -1,34 +1,92 @@
-import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import {useState, useEffect} from 'react'
+import * as data from './assets/data.json';
 import './App.css'
 
+// Import passages, books and chapters
+
+// Add functions to get and set the passage from query params getPassageFromQuery()
+
+const passages = data.default
+const urlParams = new URLSearchParams(window.location.search);
+let initialPassage = urlParams.get('passage')
+let initialPassageIndex = 0;
+
+if (initialPassage) {
+  console.log(initialPassage, passages.indexOf(initialPassage))
+  initialPassageIndex = passages.indexOf(initialPassage)
+} else {
+  initialPassage = passages[initialPassageIndex]
+}
+
+
+
+
 function App() {
-  const [count, setCount] = useState(0)
-  const [passageHtml, setPassageHtml] = useState('lalal <button>test</button>')
+  const [index, setIndex] = useState(initialPassageIndex)
+  // const [filter, setFilter] = useState('')
+  const [passage, setPassage] = useState(initialPassage)
+  const [passageHtml, setPassageHtml] = useState('')
 
-
+  function handleClick(increment) {
+    setIndex(index + increment)
+    setPassage(passages[index + increment])
+  }
+  
 
   useEffect(() => {
-    fetch('/.netlify/functions/biblija-net-proxy?passage=Jn+11%2C+45-53')
+    fetch('/.netlify/functions/biblija-net-proxy?passage=' + encodeURIComponent(passage) )
       .then(res => res.text())
       .then(html => {
-        console.log(html)
+        // console.log(html)
         setPassageHtml(html)
       })
-  }, [])
 
+    
+
+    const url = new URL(window.location.href);
+    url.searchParams.set('passage', passage);
+    
+    // Push the updated URL to the history stack
+    window.history.pushState({ path: url.href }, '', url.href);
+    
+    // Listen for the 'popstate' event to handle back/forward navigation
+    const handlePopstate = () => {
+      // Do something when the URL changes
+      // For example, fetch data based on the new parameter value
+      const updatedParamValue = url.searchParams.get('paramName');
+      console.log(updatedParamValue); // Output: "example"
+    };
+    window.addEventListener('popstate', handlePopstate);
+    
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('popstate', handlePopstate);
+    };
+  }, [passage, index])
+  
   return (
     <>
-      <h1>Vite + React</h1>
+      {/* If no passage is selected, filter down by book and chapters (useState?) */}
+      <h1>Odlomki najina pot</h1>
+      <h3>{ passage }</h3>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button onClick={() => handleClick(-1)} disabled={index === 0}>
+          Nazaj
+        </button>
+        <button onClick={() => handleClick(1)} disabled={index === passages.length - 1}>
+          Naprej
         </button>
       </div>
-      <div id="passage"  dangerouslySetInnerHTML={{__html: passageHtml}}></div>
+      {passage
+        ?<div className="passage" dangerouslySetInnerHTML={{__html: passageHtml}}></div>
+        :<div className="passage">No passage selected</div>
+      }
+      
     </>
   )
 }
 
 export default App
+
+
+// Potential improvement - automatically load the appropriate
