@@ -1,6 +1,6 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
+  margin: 0 auto auto;
   padding: 2rem;
   text-align: center;
 }
@@ -78,11 +78,15 @@ br:has(+ form) {
   }
 }
 
-.passage .text .s1 {
-  font-weight: bold;
+.passage .text .s1,
+.passage .text .c {
   margin: 0.5em 0;
   color: #A42A30;
   text-align: center;
+}
+
+.passage .text .c {
+  font-size: 1.5em;
 }
 
 .passage .text {
