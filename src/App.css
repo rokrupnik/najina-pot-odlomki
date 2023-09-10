@@ -101,4 +101,13 @@ br:has(+ form) {
 
 .passage .text .v {
   opacity: 0.3;
+  font-size: .8em;
+}
+
+.passage .text .q1 {
+  margin-left: 2em;
+}
+
+.passage .text .qt {
+  font-style: italic;
 }
