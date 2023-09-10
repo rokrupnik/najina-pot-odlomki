@@ -12,7 +12,7 @@ exports.handler = async event => {
         
         // Decode text, since the response uses windows-1250 encoding
         // See: https://stackoverflow.com/a/66125431/4819453
-        const htmlBuffer = await response.text();
+        const htmlBuffer = await response.arrayBuffer();
         const decoder = new TextDecoder('windows-1250');
         html = decoder.decode(htmlBuffer);
         statusCode = 200;
