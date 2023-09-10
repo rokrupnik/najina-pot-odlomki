@@ -41,8 +41,7 @@ function App() {
     // var myHeaders = new Headers();
     // myHeaders.append('Content-Type','text/html; charset=windows-1250');
 
-    
-    const loader = setTimeout(() => setPassageHtml('Nalagam odlomek...'), 1000)
+    const loader = setTimeout(() => setPassageHtml('Nalagam odlomek...'), 300)
 
     fetch('/.netlify/functions/biblija-net-proxy?passage=' + encodeURIComponent(passage) )
       .then(res => res.text())
