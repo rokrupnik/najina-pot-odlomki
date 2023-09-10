@@ -33,7 +33,7 @@
   }
 }
 
-h1 {
+h1.main-title {
   font-size: 1.8em;
   margin-bottom: 0;
 }
@@ -80,14 +80,15 @@ br:has(+ form) {
 
 .passage .text .s1 {
   font-weight: bold;
-  margin-bottom: 0.5em;
+  margin: 0.5em 0;
   color: #A42A30;
+  text-align: center;
 }
 
-.passage .text .p {
+.passage .text {
   text-align: left;
 }
 
-.passage .text .p .v {
+.passage .text .v {
   opacity: 0.3;
 }
