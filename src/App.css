@@ -33,6 +33,10 @@
   }
 }
 
+h1 {
+  font-size: 2.4em;
+}
+
 .card {
   padding: 2em;
 }
@@ -51,6 +55,12 @@ button:first-child {
 .passage h3,
 br:has(+ form) {
   display: none;
+}
+
+/* Show the last div - it should contain the credits */
+.passage div:last-of-type {
+  display: block;
+  margin-bottom: 0.5em;
 }
 
 .passage table div {
@@ -74,5 +84,5 @@ br:has(+ form) {
 }
 
 .passage .text .p .v {
-  opacity: 0.5;
+  opacity: 0.2;
 }
