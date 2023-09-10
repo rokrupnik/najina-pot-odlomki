@@ -48,10 +48,31 @@ button:first-child {
 .passage div,
 .passage form,
 .passage hr,
-.passage h3 {
+.passage h3,
+br:has(+ form) {
   display: none;
 }
 
 .passage table div {
   display: block;
+}
+
+@media only screen and (min-width: 769px) {
+  .passage {
+    padding: 0 25%;
+  }
+}
+
+.passage .text .s1 {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  color: #A42A30;
+}
+
+.passage .text .p {
+  text-align: left;
+}
+
+.passage .text .p .v {
+  opacity: 0.5;
 }
