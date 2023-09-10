@@ -34,11 +34,16 @@
 }
 
 h1 {
-  font-size: 2.4em;
+  font-size: 1.8em;
+  margin-bottom: 0;
 }
 
 .card {
   padding: 2em;
+}
+
+.card .passage-label {
+  margin-bottom: 0;
 }
 
 button:first-child {
@@ -84,5 +89,5 @@ br:has(+ form) {
 }
 
 .passage .text .p .v {
-  opacity: 0.2;
+  opacity: 0.3;
 }
