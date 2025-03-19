@@ -38,11 +38,11 @@ function App() {
     const date = new Date(year, month, 1);
     let fridayCount = 0;
     
-    while (fridayCount < 2) {
-      if (date.getDay() === 5) { // 5 represents Friday
+    while (fridayCount < 3) {
+      if (date.getDay() === 3) { // 5 represents Friday
         fridayCount++;
       }
-      if (fridayCount < 2) {
+      if (fridayCount < 3) {
         date.setDate(date.getDate() + 1);
       }
     }
@@ -64,6 +64,12 @@ function App() {
     ];
     
     let targetMonth: string;
+
+    console.log(secondFriday)
+    console.log(today)
+    console.log(today.getDate())
+    console.log(secondFriday.getDate())
+
     if (today.getDate() > secondFriday.getDate()) {
       // Use next month
       const nextMonth = currentMonth + 1;
