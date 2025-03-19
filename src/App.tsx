@@ -129,17 +129,19 @@ function App() {
       <h1 className="main-title">Odlomki najina pot</h1>
       {/* <h3>{ passage }</h3> */}
       <div className="card">
-        <button onClick={() => handleClick(-1)} disabled={index === 0}>
-          <svg width="16px" height="16px" viewBox="0 0 512 512" data-name="Layer 1" id="Layer_1" stroke="currentColor" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" d="M34,256,210,80l21.21,21.2L91.4,241H478v30H91.4L231.25,410.84,210,432Z"/></svg>
-        </button>
+        <div className="nav-buttons">
+          <button onClick={() => handleClick(-1)} disabled={index === 0}>
+            <svg width="16px" height="16px" viewBox="0 0 512 512" data-name="Layer 1" id="Layer_1" stroke="currentColor" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M197.4,129.3c-4.4,0-8.5,1.7-11.6,4.8L64,254.4l121.7,123.2c3.1,3.2,7.3,5,11.8,5c9.2,0.1,16.7-7.3,16.8-16.5  c0,0,0-0.1,0-0.1v-61.5c0,0,21.4-10.7,57.4-10.7c42.1,0,104.4,14.5,176.3,77.5c0,0-33.4-166.9-233.7-166.9v-58.3  c0-9.2-7.4-16.7-16.6-16.7C197.6,129.3,197.5,129.3,197.4,129.3 M197.4,99.3L197.4,99.3c11.9,0,23.4,4.5,32.1,12.7  c9.5,8.8,14.8,21.1,14.7,34.1v29.5c38.5,3.2,73.5,12.6,104.5,28c31.5,15.7,59.1,38,81,65.5c37.5,46.9,47.3,94.4,47.7,96.4  c3.3,16.2-7.3,32.1-23.5,35.3c-9.2,1.8-18.6-0.7-25.7-6.8c-66.1-57.9-121.6-70-156.5-70c-9.2,0-18.4,0.9-27.5,2.7V366  c0.1,12.9-5.3,25.2-14.7,34c-8.7,8.1-20.2,12.7-32.1,12.6c-12.5,0-24.4-5-33.1-13.9L42.6,275.5c-11.6-11.8-11.5-30.8,0.3-42.4  c0,0,0,0,0,0l121.8-120.3C173.4,104.2,185.2,99.3,197.4,99.3z"/></svg>
+          </button>
 
-        <button onClick={handleCurrentMonth} style={{ marginInline: '20px' }}>
-          Ta mesec
-        </button>
-        
-        <button onClick={() => handleClick(1)} disabled={index === passages.length - 1}>
-          <svg width="16px" height="16px" viewBox="0 0 512 512" data-name="Layer 1" id="Layer_1" stroke="currentColor" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" d="M478,256,302,432l-21.21-21.2L420.6,271H34V241H420.6L280.75,101.16,302,80Z"/></svg>
-        </button>
+          <button onClick={handleCurrentMonth}>
+            Ta mesec
+          </button>
+          
+          <button onClick={() => handleClick(1)} disabled={index === passages.length - 1}>
+            <svg width="16px" height="16px" viewBox="0 0 512 512" data-name="Layer 1" id="Layer_1" stroke="currentColor" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M314.55,129.32a16.41,16.41,0,0,1,11.62,4.84L448,254.45,326.32,377.68a16.33,16.33,0,0,1-11.76,5A16.68,16.68,0,0,1,297.74,366V304.54s-21.35-10.67-57.45-10.67c-42.13,0-104.36,14.52-176.29,77.45,0,0,33.39-166.95,233.74-166.95V146.05a16.68,16.68,0,0,1,16.81-16.73m0-30h0A46.85,46.85,0,0,0,282.45,112a46.09,46.09,0,0,0-14.71,34.06v29.53c-38.47,3.17-73.51,12.56-104.46,28a240.94,240.94,0,0,0-81,65.48C44.79,316,35,363.44,34.58,365.44A30,30,0,0,0,83.76,393.9c66.15-57.89,121.63-70,156.53-70a137.81,137.81,0,0,1,27.45,2.67V366A46.12,46.12,0,0,0,282.46,400a46.92,46.92,0,0,0,32.1,12.65,46.21,46.21,0,0,0,33.1-13.92L469.35,275.53a30,30,0,0,0-.27-42.43L347.24,112.82a46.27,46.27,0,0,0-32.69-13.5Z"/></svg>
+          </button>
+        </div>
 
         {passage ? <p className="passage-label"><strong>{passage}</strong><br></br>{month}</p> : ''}
       </div>

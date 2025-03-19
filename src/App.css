@@ -46,6 +46,18 @@ h1.main-title {
   margin-bottom: 0;
 }
 
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+
+  button {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+  }
+}
+
 .read-the-docs {
   color: #888;
 }
