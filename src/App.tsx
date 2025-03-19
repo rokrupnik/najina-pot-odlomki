@@ -34,6 +34,56 @@ function App() {
     setMonth(months[index + increment])
   }
 
+  function getSecondFriday(year: number, month: number): Date {
+    const date = new Date(year, month, 1);
+    let fridayCount = 0;
+    
+    while (fridayCount < 2) {
+      if (date.getDay() === 5) { // 5 represents Friday
+        fridayCount++;
+      }
+      if (fridayCount < 2) {
+        date.setDate(date.getDate() + 1);
+      }
+    }
+    
+    return date;
+  }
+
+  function getCurrentPassageIndex(): number {
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const currentMonth = today.getMonth();
+    
+    const secondFriday = getSecondFriday(currentYear, currentMonth);
+    
+    // Format for comparison with months array (e.g., "marec 2023")
+    const monthNames = [
+      'januar', 'februar', 'marec', 'april', 'maj', 'junij',
+      'julij', 'avgust', 'september', 'oktober', 'november', 'december'
+    ];
+    
+    let targetMonth: string;
+    if (today.getDate() > secondFriday.getDate()) {
+      // Use next month
+      const nextMonth = currentMonth + 1;
+      const nextMonthDate = new Date(currentYear, nextMonth, 1);
+      targetMonth = `${monthNames[nextMonthDate.getMonth()]} ${nextMonthDate.getFullYear()}`;
+    } else {
+      // Use current month
+      targetMonth = `${monthNames[currentMonth]} ${currentYear}`;
+    }
+    
+    const monthIndex = months.indexOf(targetMonth);
+    return monthIndex >= 0 ? monthIndex : 0;
+  }
+
+  function handleCurrentMonth() {
+    const newIndex = getCurrentPassageIndex();
+    setIndex(newIndex);
+    setPassage(passages[newIndex]);
+    setMonth(months[newIndex]);
+  }
 
   useEffect(() => {
 
@@ -62,7 +112,7 @@ function App() {
     const handlePopstate = () => {
       // Do something when the URL changes
       // For example, fetch data based on the new parameter value
-      const updatedParamValue = url.searchParams.get('paramName');
+      const updatedParamValue = url.searchParams.get('passage');
       console.log(updatedParamValue); // Output: "example"
     };
     window.addEventListener('popstate', handlePopstate);
@@ -75,16 +125,22 @@ function App() {
 
   return (
     <>
-      {/* If no passage is selected, filter down by book and chapters (useState?) */}
+      {/* TODO: If no passage is selected, filter down by book and chapters (useState?) */}
       <h1 className="main-title">Odlomki najina pot</h1>
       {/* <h3>{ passage }</h3> */}
       <div className="card">
         <button onClick={() => handleClick(-1)} disabled={index === 0}>
-          Nazaj
+          ←
         </button>
+
+        <button onClick={handleCurrentMonth} style={{ marginInline: '20px' }}>
+          Ta mesec
+        </button>
+        
         <button onClick={() => handleClick(1)} disabled={index === passages.length - 1}>
-          Naprej
+          →
         </button>
+
         {passage ? <p className="passage-label"><strong>{passage}</strong><br></br>{month}</p> : ''}
       </div>
       {!passage
