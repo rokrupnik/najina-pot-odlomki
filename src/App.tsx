@@ -130,7 +130,7 @@ function App() {
       {/* <h3>{ passage }</h3> */}
       <div className="card">
         <button onClick={() => handleClick(-1)} disabled={index === 0}>
-          <svg width="32px" height="32px" viewBox="0 0 512 512" data-name="Layer 1" id="Layer_1" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M34,256,210,80l21.21,21.2L91.4,241H478v30H91.4L231.25,410.84,210,432Z"/></svg>
+          <svg width="16px" height="16px" viewBox="0 0 512 512" data-name="Layer 1" id="Layer_1" stroke="currentColor" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" d="M34,256,210,80l21.21,21.2L91.4,241H478v30H91.4L231.25,410.84,210,432Z"/></svg>
         </button>
 
         <button onClick={handleCurrentMonth} style={{ marginInline: '20px' }}>
@@ -138,7 +138,7 @@ function App() {
         </button>
         
         <button onClick={() => handleClick(1)} disabled={index === passages.length - 1}>
-          <svg width="32px" height="32px" viewBox="0 0 512 512" data-name="Layer 1" id="Layer_1" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M478,256,302,432l-21.21-21.2L420.6,271H34V241H420.6L280.75,101.16,302,80Z"/></svg>
+          <svg width="16px" height="16px" viewBox="0 0 512 512" data-name="Layer 1" id="Layer_1" stroke="currentColor" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" d="M478,256,302,432l-21.21-21.2L420.6,271H34V241H420.6L280.75,101.16,302,80Z"/></svg>
         </button>
 
         {passage ? <p className="passage-label"><strong>{passage}</strong><br></br>{month}</p> : ''}
